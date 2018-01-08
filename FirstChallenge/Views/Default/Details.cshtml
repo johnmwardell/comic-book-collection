@@ -1,0 +1,19 @@
+﻿@model FirstChallenge.Models.ComicBook
+@{
+    ViewBag.Title = "Details";
+    FirstChallenge.Models.ComicBook comicBook = Model;
+}
+<h2>Details about @comicBook.ComicTitle #@comicBook.EpisodeNumber</h2>
+<h3>Episode Title: @comicBook.EpisodeTitle</h3>
+<strong>Starring: </strong>
+@if (comicBook.Characters.Count == 1)
+            {
+    <span>@comicBook.Characters.ElementAt(0).Name</span>
+}
+else
+{
+    <span>@comicBook.Characters.ElementAt(0).Name, @comicBook.Characters.ElementAt(1).Name</span>
+}
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,26 @@
+﻿@model List<FirstChallenge.Models.ComicBook>
+@{
+    ViewBag.Title = "index";
+}
+
+<h2>My Comics</h2>
+
+@{ 
+    foreach (var comicBook in Model)
+    {
+        <p>
+            <h1>@Html.ActionLink(comicBook.ComicTitle, "Details", new { id = comicBook.ComicBookId })</h1>
+            <h3>@comicBook.EpisodeNumber - #@comicBook.EpisodeTitle</h3><br />
+            <strong>Starring:</strong> 
+            @if (comicBook.Characters.Count == 1)
+            {
+                <span>@comicBook.Characters.ElementAt(0).Name</span>
+            }
+            else
+            {
+                <span>@comicBook.Characters.ElementAt(0).Name, @comicBook.Characters.ElementAt(1).Name</span>
+            }
+        </p>
+    }
+}
+
